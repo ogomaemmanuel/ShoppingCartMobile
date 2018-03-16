@@ -1,0 +1,48 @@
+<!--
+  Generated template for the CartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cart</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card atmCards *ngFor="let product of products;let idx = index" >
+        <img src="{{product.productMediaFile}}"/>
+        <ion-card-content>
+          <ion-card-title>
+           {{product.productName}}
+            </ion-card-title>
+          <p>
+            The most popular industrial group ever, and largely
+            responsible for bringing the music to a mass audience.
+          </p>
+        </ion-card-content>
+    
+        <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="thumbs-up"></ion-icon>
+                <div>12 Likes</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button (click)="removeFromCart(product)" ion-button icon-left clear small>
+                <ion-icon name="trash"></ion-icon>
+                <div>Remove From Cart</div>
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-note>            
+              </ion-note>
+            </ion-col>
+          </ion-row>
+      </ion-card>
+</ion-content>

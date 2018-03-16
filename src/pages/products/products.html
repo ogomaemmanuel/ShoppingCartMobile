@@ -1,0 +1,52 @@
+<!--
+  Generated template for the ProductsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle icon-only>
+          <ion-icon name='menu'></ion-icon>    
+        </button>
+    <ion-title>Products</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <ion-card atmCards *ngFor="let product of products;let idx = index" >
+    <img src="{{product.productMediaFile}}"/>
+    <ion-card-content>
+      <ion-card-title>
+       {{product.productName}}
+        </ion-card-title>
+      <p>
+        The most popular industrial group ever, and largely
+        responsible for bringing the music to a mass audience.
+      </p>
+    </ion-card-content>
+
+    <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>12 Likes</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button (click)="addToCart(product)" ion-button icon-left clear small>
+            <ion-icon name="add"></ion-icon>
+            <div>Add To Cart</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>            
+          </ion-note>
+        </ion-col>
+      </ion-row>
+  </ion-card>
+</ion-content>
