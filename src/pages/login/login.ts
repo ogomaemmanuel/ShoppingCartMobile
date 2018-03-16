@@ -19,7 +19,7 @@ import { User } from '../../models/user';
 })
 export class LoginPage implements OnInit  {
  
-  public userLoginFormGroup: FormGroup;
+  userLoginFormGroup: FormGroup;
   constructor(
     public navCtrl: NavController,
     private menuCtrl: MenuController,   
