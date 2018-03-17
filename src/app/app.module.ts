@@ -26,7 +26,10 @@ import {AngularFireAuthModule} from 'angularfire2/auth'
     BrowserModule,
     HttpClientModule,
     AngularFireAuthModule,   
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      scrollAssist: false,
+      autoFocusAssist: false
+		}),
     AngularFireModule.initializeApp(FIREBASE_CONFIG)
   ],
   bootstrap: [IonicApp],

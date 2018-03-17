@@ -31,7 +31,7 @@ export class CartProvider {
       this.database=db;
       db.executeSql('CREATE TABLE IF NOT EXISTS '
         + 'customer_cart(product_id TEXT PRIMARY KEY, product_name TEXT, product_media_file TEXT,'
-        + ' product_sku TEXT, product_category TEXT,price REAL, shopper_review INT)', {}
+        + ' product_sku TEXT, product_category TEXT,price REAL, shopper_review INT,quantity INT)', {}
       )
     }).then(dbresp=>{
       
@@ -40,8 +40,8 @@ export class CartProvider {
     })  
   }
 
-  AddProductToCart(product: Product) {      
-      this.database.executeSql('INSERT INTO customer_cart VALUES(?,?,?,?,?,?,?)',
+  AddProductToCart(product: Product,quantity:number) {      
+      this.database.executeSql('INSERT INTO customer_cart VALUES(?,?,?,?,?,?,?,?)',
         [product.productId,
         product.productName,
         product.productMediaFile,
@@ -49,6 +49,7 @@ export class CartProvider {
         product.productCategory,
         product.price,
         product.shopperReview,
+        quantity
         ]).then(()=>{
           let alert = this.AlertCtrl.create({
             message:"product added to cart",

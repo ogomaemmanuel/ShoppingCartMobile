@@ -20,14 +20,18 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
+      
       splashScreen.hide();
     });
 
     this.pageSettings = [
       { title: 'Home', page: 'HomePage', icon: "ios-home-outline" },      
       { title: 'Cart', page: 'CartPage', icon: "cart" },
+      { title: 'Check Out', page: 'CheckOutPage', icon: "ios-log-out" },
       { title: 'Settings', page: 'SettingsPage', icon: "ios-settings-outline" },
       { title: 'Logout', page: 'LoginPage', icon: "ios-log-out" },
+     
+     
     ];
   }
 

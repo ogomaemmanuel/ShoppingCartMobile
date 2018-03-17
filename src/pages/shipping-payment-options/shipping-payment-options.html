@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ShippingPaymentOptionsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ShippingPaymentOptions</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+        <ion-label>Payment method</ion-label>
+        <ion-select [(ngModel)]="paymentMethod">
+          <ion-option value="f">Mpesa</ion-option>
+          <ion-option value="m">Cash on delivery</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>Shipment method</ion-label>
+          <ion-select [(ngModel)]="shipmentMethod">
+            <ion-option value="f">Self Pickup</ion-option>
+            <ion-option value="m">Default Shipment option</ion-option>
+          </ion-select>
+        </ion-item>
+</ion-content>
