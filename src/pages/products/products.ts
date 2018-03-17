@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, AlertController, LoadingController } from 'ionic-angular';
 import { ProductsProvider } from '../../providers/products/products';
 import { Product } from '../../models/product';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -26,13 +26,21 @@ export class ProductsPage implements OnInit {
     private cartProvider: CartProvider,
     private menuCtrl: MenuController,
     private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
     public navParams: NavParams) {
   }
   ngOnInit(): void {
+    let loader=this.loadingCtrl.create({
+      content:"loading....",
+      spinner:'dots'
+
+    });
+    loader.present();
     this.productProvider.getAllProducts().subscribe(products => {
       this.products = products;
-      console.log(products);
+      loader.dismiss();
     }, error => {
+      loader.dismiss();
       console.log("error");
     });
   }
