@@ -17,15 +17,21 @@
     <ion-item>
         <ion-label>Payment method</ion-label>
         <ion-select [(ngModel)]="paymentMethod">
-          <ion-option value="f">Mpesa</ion-option>
-          <ion-option value="m">Cash on delivery</ion-option>
+          <ion-option
+           *ngFor="let paymentmethod of checkoutOption.paymentMethods"
+           [value]="paymentmethod.paymentMethodId">
+           {{paymentmethod.name}}
+          </ion-option>          
         </ion-select>
       </ion-item>
       <ion-item>
           <ion-label>Shipment method</ion-label>
           <ion-select [(ngModel)]="shipmentMethod">
-            <ion-option value="f">Self Pickup</ion-option>
-            <ion-option value="m">Default Shipment option</ion-option>
+            <ion-option
+           *ngFor="let shipmentMethod of checkoutOption.shipmentMethods"
+           [value]="shipmentMethod.shipmentMethodId">
+           {{shipmentMethod.name}}
+          </ion-option>      
           </ion-select>
         </ion-item>
         <div>  

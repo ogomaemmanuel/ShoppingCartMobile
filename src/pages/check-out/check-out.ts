@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { BillingInfo } from '../../models/billingInfo';
 
 /**
  * Generated class for the CheckOutPage page.
@@ -41,8 +42,9 @@ export class CheckOutPage implements OnInit {
   }
 
   goToShippingOption() {
+   let billingInfo:BillingInfo=this.billingInfoForm.value ;
     this.navCtrl.push('ShippingPaymentOptionsPage',
-      { billinInfo: this.billingInfoForm.value });
+      { billingInfo: billingInfo });
   }
 
 
