@@ -7,4 +7,5 @@ export class Product{
    public shopperReview:number;
    public productId:string;
    public price:number;
+   public quantity?:number
 }

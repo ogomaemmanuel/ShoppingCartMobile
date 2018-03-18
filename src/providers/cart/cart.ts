@@ -83,7 +83,8 @@ export class CartProvider {
             productSku: data.rows.item(i).product_sku,
             productCategory: data.rows.item(i).product_category,
             price: data.rows.item(i).price,
-            shopperReview: data.rows.item(i).shopper_review
+            shopperReview: data.rows.item(i).shopper_review,
+            quantity:data.rows.item(i).quantity,
              });
         }
       }

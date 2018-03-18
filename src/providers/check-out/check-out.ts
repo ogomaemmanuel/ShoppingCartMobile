@@ -12,15 +12,16 @@ import { Observable } from 'rxjs/Observable';
 */
 @Injectable()
 export class CheckOutProvider {
-  private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/api/"
+  //private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/api/"
+  private endPoint:string="http://38ae94e2.ngrok.io/api/"
   constructor(public http: HttpClient) {
     console.log('Hello CheckOutProvider Provider');
   }
-
-
   getCheckOutOption():Observable<CheckoutOption>{
   return  this.http.get<CheckoutOption>(this.endPoint+"CheckoutOption");
-
   }
 
+  getOrderSummary(){
+
+  }
 }

@@ -12,7 +12,8 @@ import { Observable } from 'rxjs/Observable';
 */
 @Injectable()
 export class ProductsProvider {
-private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/api/products/all"
+//private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/api/products/all"
+private endPoint:string="http://38ae94e2.ngrok.io/api/products/all"
   constructor(public http: HttpClient) {
     console.log('Hello ProductsProvider Provider');
   }
