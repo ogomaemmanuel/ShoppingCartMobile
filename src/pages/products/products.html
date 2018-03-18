@@ -31,16 +31,29 @@
     </ion-card-content>
 
     <ion-row>
+
+        <ion-item>
+            <ion-icon name="pricetag" item-start></ion-icon>
+           price
+            <ion-badge item-end>{{product.price|currency:'ksh':'symbol':'4.2-2'}}</ion-badge>
+          </ion-item>
+
+          <ion-item>
+              <ion-icon name="star" item-start></ion-icon>
+             rating
+              <ion-badge item-end>{{product.shopperReview}}</ion-badge>
+            </ion-item>
+
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="thumbs-up"></ion-icon>
-            <div>12 Likes</div>
+            <div>12 Reviews</div>
           </button>
         </ion-col>
         <ion-col>
           <button (click)="addToCart(product)" ion-button icon-left clear small>
-            <ion-icon name="add"></ion-icon>
-            <div>Add To Cart</div>
+            <ion-icon name="cart"></ion-icon>
+            <div></div>
           </button>
         </ion-col>
         <ion-col center text-center>
