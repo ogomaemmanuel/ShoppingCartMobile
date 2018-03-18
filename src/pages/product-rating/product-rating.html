@@ -15,14 +15,44 @@
 
 <ion-content padding>
 
-    <rating [(ngModel)]="rate" 
-    readOnly="false" <!--default value-->
-    max="5" <!--default value-->
-    emptyStarIconName="star-outline" <!--default value-->
-    halfStarIconName="star-half" <!--default value-->
-    starIconName="star" <!--default value-->
-    nullable="false" <!--default value-->
-    (ngModelChange)="onModelChange($event)"> <!--use it when you need to do something when user clicks on a star. in case you only need to change ngModel property, this property can be ommited.-->
-</rating>
+   
+
+<ion-card atmCards>
+    <img src="{{product.productMediaFile}}"/>
+    <ion-card-content>
+      <ion-card-title>
+       {{product.productName}}
+        </ion-card-title>
+      <p>
+        The most popular industrial group ever, and largely
+        responsible for bringing the music to a mass audience.
+      </p>
+    </ion-card-content>
+    <ion-row>
+        <ion-item>
+            <ion-icon name="pricetag" item-start></ion-icon>
+           price
+            <ion-badge item-end>{{product.price|currency:'ksh':'symbol':'4.2-2'}}</ion-badge>
+          </ion-item>
+          <ion-item>
+              <ion-icon name="star" item-start></ion-icon>
+             rating
+              <ion-badge item-end>{{product.shopperReview}}</ion-badge>
+            </ion-item>       
+        <ion-col>  
+                  
+        </ion-col>        
+      </ion-row>
+      <span>Rate:</span>
+      <rating [(ngModel)]="rate" 
+      readOnly="false" 
+      max="5" 
+      emptyStarIconName="star-outline" 
+      halfStarIconName="star-half" 
+      starIconName="star" 
+      nullable="false" 
+      (ngModelChange)="onModelChange($event)">
+  </rating>
+  </ion-card>
 
 </ion-content>

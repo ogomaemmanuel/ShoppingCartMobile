@@ -86,6 +86,9 @@ export class ProductsPage implements OnInit {
 
   removeFromCart(product: Product) {
 
-
+  }
+  rateProduct(product: Product){
+    console.log("product to rate is",product);
+    this.navCtrl.push("ProductRatingPage",{product:product});
   }
 }
