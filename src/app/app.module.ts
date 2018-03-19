@@ -16,8 +16,7 @@ import { HttpClient } from '@angular/common/http';
 import { SQLite } from '@ionic-native/sqlite';
 import {AngularFireModule} from 'angularfire2';
 import { FIREBASE_CONFIG } from './app.firebase.config';
-import {AngularFireAuthModule} from 'angularfire2/auth'
-
+import {AngularFireAuthModule} from 'angularfire2/auth';
 @NgModule({
   declarations: [
     MyApp,   
@@ -25,7 +24,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth'
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularFireAuthModule,   
+    AngularFireAuthModule,    
     IonicModule.forRoot(MyApp,{
       scrollAssist: false,
       autoFocusAssist: false

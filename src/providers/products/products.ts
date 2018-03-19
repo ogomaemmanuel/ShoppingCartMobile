@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Product } from '../../models/product';
@@ -19,6 +19,16 @@ private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/
   }
 getAllProducts():Observable<any>{
 return this.http.get(this.endPoint).map(products=>products)
+}
+
+rateProduct(product:any){
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':'application/json',
+      'Accept': 'application/json'      
+    })
+  };
+  return this.http.post("http://shoppingcartapi20180317120238.azurewebsites.net/api/ProductRating",product,httpOptions).map(products=>products)
 }
 
 

@@ -43,7 +43,7 @@
                   
         </ion-col>        
       </ion-row>
-      <span>Rate:</span>
+      <span>Rate: {{ratingText}}</span>
       <rating [(ngModel)]="rate" 
       readOnly="false" 
       max="5" 
@@ -52,7 +52,14 @@
       starIconName="star" 
       nullable="false" 
       (ngModelChange)="onModelChange($event)">
-  </rating>
+  </rating> 
+  <div>
+      <ion-label>Review</ion-label>
+      <ion-textarea rows="4" [(ngModel)]="comment"></ion-textarea>
+  </div>
+    
+  <button ion-button (click)="submitRating()" round>Submit</button>
+
   </ion-card>
 
 </ion-content>
