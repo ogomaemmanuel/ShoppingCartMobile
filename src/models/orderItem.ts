@@ -1,8 +1,8 @@
 export interface OrderItem{
-    orderId: string;
+    orderId?: string;
     productId:string;
     qty:number;
     price:number;
     total:number;
-    orderItemId: string    
+    orderItemId?: string    
     }

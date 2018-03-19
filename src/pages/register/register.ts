@@ -43,13 +43,28 @@ let alert= this.alertCtrl.create({
   buttons:[
     {
       text:"ok",
-      role:"ok"
+      role:"ok",
+      handler:()=>{
+        this.navCtrl.setRoot("LoginPage");
+      }
     },
   ]
 })
 alert.present();
 
+    }).catch(error=>{
+      this.alertRegistrationError(error.message);
     })
   }
+alertRegistrationError(message:any){
+this.alertCtrl.create({
+  message:message,
+  title:"Registratin Error",
+  buttons:[{
+    text:"ok"
+  }]
 
+}).present();
+
+}
 }

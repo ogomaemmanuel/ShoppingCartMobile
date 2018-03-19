@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, AlertController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {AngularFireAuth} from 'angularfire2/auth'
+import { AngularFireAuth } from 'angularfire2/auth'
 import { User } from '../../models/user';
 
 
@@ -17,21 +17,22 @@ import { User } from '../../models/user';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage implements OnInit  {
- 
+export class LoginPage implements OnInit {
+
   userLoginFormGroup: FormGroup;
   constructor(
     public navCtrl: NavController,
-    private menuCtrl: MenuController,   
-    private formBuilder: FormBuilder, 
-    private angularFireAuth:AngularFireAuth,
+    private menuCtrl: MenuController,
+    private formBuilder: FormBuilder,
+    private angularFireAuth: AngularFireAuth,
+    private alertCtrl: AlertController,
     public navParams: NavParams) {
   }
   ngOnInit(): void {
     this.userLoginFormGroup = this.formBuilder.group({
 
       userName: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.compose([Validators.required])],     
+      password: ['', Validators.compose([Validators.required])],
     })
   }
 
@@ -41,7 +42,7 @@ export class LoginPage implements OnInit  {
 
     this.menuCtrl.swipeEnable(false)
 
-    
+
 
   }
 
@@ -61,21 +62,30 @@ export class LoginPage implements OnInit  {
 
   }
 
-  login(){
-     let user:User= this.userLoginFormGroup.value;
-     this.angularFireAuth.auth.signInWithEmailAndPassword(user.userName,user.password).then(resp=>{
-       this.navCtrl.setRoot("ProductsPage");
+  login() {
+    let user: User = this.userLoginFormGroup.value;
+    this.angularFireAuth.auth.signInWithEmailAndPassword(user.userName, user.password).then(resp => {
+      this.navCtrl.setRoot("ProductsPage");
 
-     }).catch(error=>{
-
-     })
+    }).catch(error => {     
+     this.alertLoginError(error.message);
+    })
   }
 
   goToRegistrationPage() {
 
-    this.navCtrl.setRoot('RegisterPage')
+    this.navCtrl.push('RegisterPage')
 
   }
-  
+  alertLoginError(message: any) {
+    this.alertCtrl.create({
+      message: message,
+      title: "Login Error",
+      buttons: [{
+        text: "ok"
+      }]
+    }).present();
+
+  }
 
 }
