@@ -18,8 +18,8 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
   templateUrl: 'register.html',
 })
 export class RegisterPage   implements OnInit{
- 
-  user:any={};
+  userRegisterFormGroup:FormGroup
+  
   constructor(
      public navCtrl: NavController,
      private formBuilder: FormBuilder,
@@ -28,7 +28,10 @@ export class RegisterPage   implements OnInit{
      public navParams: NavParams) {
   }
   ngOnInit(): void {
-    
+    this.userRegisterFormGroup = this.formBuilder.group({
+      userName: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])],
+    })
   
   }
   ionViewDidLoad() {
@@ -36,7 +39,7 @@ export class RegisterPage   implements OnInit{
   }
 
   register(){
-    let user:User={password:this.user.password,userName:this.user.userName};
+    let user:User=this.userRegisterFormGroup.value;
     this.angularFireAuth.auth.createUserWithEmailAndPassword(user.userName,user.password).then(resp=>{
 let alert= this.alertCtrl.create({
   message:"Account Created Successfully",

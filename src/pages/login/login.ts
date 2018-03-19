@@ -18,7 +18,7 @@ import { User } from '../../models/user';
   templateUrl: 'login.html',
 })
 export class LoginPage implements OnInit {
-
+   passwordMinlegth=6;
   userLoginFormGroup: FormGroup;
   constructor(
     public navCtrl: NavController,
@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
     this.userLoginFormGroup = this.formBuilder.group({
 
       userName: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required,Validators.minLength(7)])],
     })
   }
 

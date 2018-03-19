@@ -26,7 +26,7 @@
   
   
   
-    <form [formGroup]="userLoginFormGroup" #userLoginForm (ngSubmit)="login()">
+    <form [formGroup]="userLoginFormGroup" (ngSubmit)="login()">
   
       <ion-list>
   
@@ -34,12 +34,27 @@
           <ion-label floating>User Name</ion-label>  
           <ion-input type="email"  formControlName="userName"></ion-input>  
         </ion-item>
+      
+
+        <span *ngIf="userLoginFormGroup.controls.userName.hasError('pattern') && userLoginFormGroup.get('userName').touched" class="alert alert-danger">Enter a valid email</span>
+        <span *ngIf="userLoginFormGroup.controls.userName.hasError('required') && userLoginFormGroup.get('userName').touched" class="alert alert-danger">Email is required</span>
+        <!-- <span *ngIf="userLoginFormGroup.controls.userName.hasError('minlegth') && userLoginFormGroup.get('userName').touched" class="alert alert-danger">Weak password</span> -->
   
         <ion-item>  
           <ion-label floating>Password</ion-label>  
           <ion-input  type="password"   formControlName="password"></ion-input>  
+          
         </ion-item>
-  
+        <!-- <ion-item 
+        *ngIf="!userLoginFormGroup.controls.password.valid 
+         && (userLoginFormGroup.controls.password.dirty
+         ||userLoginFormGroup.controls.password.touched)">
+            <p>Please enter a valid password.</p>
+        </ion-item> -->
+        <span *ngIf="userLoginFormGroup.controls.password.hasError('pattern') && userLoginFormGroup.get('password').touched" class="alert alert-danger">Enter a valid password</span>
+        <span *ngIf="userLoginFormGroup.controls.password.hasError('required') && userLoginFormGroup.get('password').touched" class="alert alert-danger">Password is required</span>
+        <span *ngIf="userLoginFormGroup.controls.password.hasError('minlength') && userLoginFormGroup.get('password').touched" class="alert alert-danger">Password must be atleast {{passwordMinlegth}} character</span>
+       
       </ion-list>
   
       <div>

@@ -27,24 +27,29 @@
   
   
   
-    <form  (ngSubmit)="register()">
+    <form [formGroup]="userRegisterFormGroup" (ngSubmit)="register()">
   
       <ion-list>
   
         <ion-item>  
           <ion-label floating>Email</ion-label>  
-          <ion-input type="email"  [(ngModel)]="user.userName" name="userNames" ></ion-input>  
+          <ion-input type="email"  formControlName="userName"></ion-input>  
         </ion-item>
   
         <ion-item>  
           <ion-label floating>Password</ion-label>  
-          <ion-input  type="password"   [(ngModel)]="user.password" name="passwords" ></ion-input>  
+          <ion-input  type="password"  formControlName="password"></ion-input>  
+          
         </ion-item>
+        <span *ngIf="userRegisterFormGroup.controls.password.hasError('pattern') && userRegisterFormGroup.get('password').touched" class="alert alert-danger">Enter a valid password</span>
+          <span *ngIf="userRegisterFormGroup.controls.password.hasError('required') && userRegisterFormGroup.get('password').touched" class="alert alert-danger">Password is required</span>
+          <span *ngIf="userRegisterFormGroup.controls.password.hasError('minlength') && userRegisterFormGroup.get('password').touched" class="alert alert-danger">Password must be atleast  character</span>
+       
   
       </ion-list>
   
       <div>  
-        <button ion-button block>Register</button>
+        <button ion-button [disabled]="!userRegisterFormGroup.valid" block>Register</button>
   
       </div>
   
