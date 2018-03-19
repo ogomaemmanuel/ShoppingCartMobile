@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ProductsProvider } from '../providers/products/products';
@@ -17,6 +17,7 @@ import { SQLite } from '@ionic-native/sqlite';
 import {AngularFireModule} from 'angularfire2';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 import {AngularFireAuthModule} from 'angularfire2/auth';
+import { TooltipsModule } from 'ionic-tooltips';
 @NgModule({
   declarations: [
     MyApp,   
@@ -24,7 +25,8 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularFireAuthModule,    
+    AngularFireAuthModule, 
+    BrowserAnimationsModule,
     IonicModule.forRoot(MyApp,{
       scrollAssist: false,
       autoFocusAssist: false
