@@ -15,7 +15,7 @@ import { Order } from '../../models/order';
 @Injectable()
 export class CheckOutProvider {
   private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/api/"
-  //private endPoint:string="http://0edb49fb.ngrok.io/api/"
+  //private endPoint:string="http://4ea65ddc.ngrok.io/api/"
 
   
   constructor(public http: HttpClient) {

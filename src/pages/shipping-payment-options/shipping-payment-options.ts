@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Order } from '../../models/order';
 import { BillingInfo } from '../../models/billingInfo';
 import { CheckOutProvider } from '../../providers/check-out/check-out';
@@ -34,23 +34,22 @@ export class ShippingPaymentOptionsPage implements OnInit {
     private cartProvider: CartProvider,
     public checkOutProvider: CheckOutProvider,
     public alertCtrl: AlertController,
+    private toarsCtrl:ToastController,
    
     public navParams: NavParams) {
   }
   ngOnInit(): void {
     let billingInfo: BillingInfo = this.navParams.get("billingInfo");
     this.order = {
-      BillingInfo: billingInfo,
-      CustomerId: "",
-      Email: "",
-      NotifyShopper: true,
-      OrderDate: "",
-      OrderId: "",
-      OrderItems: [],
-      OrderNo: 0,
       paymentMethodId: this.paymentMethod,
-      ShipmentMethodId: this.shipmentMethod,
-      Status: ""
+      shipmentMethodId: this.shipmentMethod,
+      orderDate:new Date(),
+      status: "",
+      notifyShopper: true,
+      customerId: "",
+      billingInfo: billingInfo,
+      email: "",
+      orderItems: []
     };
     console.log("Billing info in paymentPage", this.order.billingInfo);
   }
@@ -100,24 +99,30 @@ export class ShippingPaymentOptionsPage implements OnInit {
 
   submitOrder() {
     return this.cartProvider.getCartItems().then(products => {
-      let orderitems: any=[];
+      let orderItems: any=[];
       products.forEach(element => {
-        orderitems.push({
-          Price: element.price,
-          Qty: element.quantity,
-          ProductId: element.productId,
-          Total: element.price * element.quantity,
+        orderItems.push({
+          price: element.price,
+          qty: element.quantity,
+          productId: element.productId,
+          total: element.price * element.quantity,
         });
-        this.order.OrderItems=orderitems;
-        this.order.ShipmentMethodId= this.shipmentMethod;
-        this.order.PaymentMethodId= this.paymentMethod;
-      
-       
-       
-      });     
+        this.order.orderItems=orderItems;
+        this.order.shipmentMethodId= this.shipmentMethod;
+        this.order.paymentMethodId= this.paymentMethod;
+      });  
+      console.log("The order sent to the server is",this.order);   
        this.checkOutProvider.submitOrder(this.order).subscribe(resp=>{
+         console.log("The order sent to the server is",this.order);
+         let toast = this.toarsCtrl.create({
+           message:"You order has been confirmed",
+           duration: 5000,
+         });
+         toast.present();
 
         });
+
+     
     })
 
   }

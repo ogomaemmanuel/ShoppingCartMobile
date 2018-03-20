@@ -27,7 +27,6 @@ export class CheckOutPage implements OnInit {
 
   ngOnInit(): void {
     this.billingInfoForm = this.formBuilder.group({
-      email: [''],
       companyName: [''],
       firstName: [''],
       lastName: [''],
