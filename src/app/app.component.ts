@@ -20,12 +20,16 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      
+     
+
+// set status bar to white
+     statusBar.backgroundColorByHexString('#0039cb');
+     statusBar.styleLightContent();     
       splashScreen.hide();
     });
 
     this.pageSettings = [
-      
+
       { title: 'Home', page: 'HomePage', icon: "ios-home-outline" },      
       { title: 'Cart', page: 'CartPage', icon: "cart" },
       { title: 'Check Out', page: 'CheckOutPage', icon: "ios-log-out" },
