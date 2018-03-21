@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BillingInfo } from '../../models/billingInfo';
 
 /**
@@ -27,12 +27,12 @@ export class CheckOutPage implements OnInit {
 
   ngOnInit(): void {
     this.billingInfoForm = this.formBuilder.group({
-      companyName: [''],
-      firstName: [''],
-      lastName: [''],
-      address: [''],
-      postalCode: [''],
-      city: ['']
+      companyName: ['',Validators.compose([Validators.required])],
+      firstName: ['',Validators.compose([Validators.required])],
+      lastName: ['',Validators.compose([Validators.required])],
+      address: ['',Validators.compose([Validators.required])],
+      postalCode: ['',Validators.compose([Validators.required])],
+      city: ['',Validators.compose([Validators.required])]
     });
   }
 

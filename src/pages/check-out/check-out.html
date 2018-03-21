@@ -44,7 +44,7 @@
         <ion-input formControlName="city" type="text"></ion-input>
       </ion-item>
       <div>
-        <button ion-button block>next</button>
+        <button [disabled]="!billingInfoForm.valid" ion-button block>next</button>
       </div>
     </form>
   </ion-list>

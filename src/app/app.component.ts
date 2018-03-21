@@ -25,13 +25,12 @@ export class MyApp {
     });
 
     this.pageSettings = [
+      
       { title: 'Home', page: 'HomePage', icon: "ios-home-outline" },      
       { title: 'Cart', page: 'CartPage', icon: "cart" },
       { title: 'Check Out', page: 'CheckOutPage', icon: "ios-log-out" },
       { title: 'Settings', page: 'SettingsPage', icon: "ios-settings-outline" },
       { title: 'Logout', page: 'LoginPage', icon: "ios-log-out" },
-     
-     
     ];
   }
 
