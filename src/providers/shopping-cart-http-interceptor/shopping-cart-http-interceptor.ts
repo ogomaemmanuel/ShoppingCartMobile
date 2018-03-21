@@ -15,7 +15,18 @@ export class ShoppingCartHttpInterceptorProvider implements HttpInterceptor  {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-   req=req.clone({});
-   return next.handle(req);
+   if (req.responseType == 'json') {
+			req = req.clone({ responseType: 'text' });
+
+			return next.handle(req).map(response => {
+				if (response instanceof HttpResponse) {
+					response = response.clone<any>({ body: JSON.parse(response.body) });
+				}
+
+				return response;
+			});
+		}
+
+		return next.handle(req);
   }
 }

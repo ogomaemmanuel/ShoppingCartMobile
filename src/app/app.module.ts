@@ -46,11 +46,11 @@ import { TooltipsModule } from 'ionic-tooltips';
     ProductsProvider,
     CartProvider,
     CheckOutProvider,    
-      // {
-      //   provide: HTTP_INTERCEPTORS,
-      //   useClass: ShoppingCartHttpInterceptorProvider,
-      //   multi: true
-      // }    
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: ShoppingCartHttpInterceptorProvider,
+        multi: true
+      }    
   ]
 })
 export class AppModule {}
