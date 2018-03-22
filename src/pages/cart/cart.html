@@ -28,10 +28,22 @@
     
         <ion-row>
             <ion-col>
-              <button ion-button icon-left clear small>
-                <ion-icon name="thumbs-up"></ion-icon>
-                <div>12 Likes</div>
-              </button>
+                <ion-item>
+                    <ion-icon name="basket" item-start></ion-icon>
+                   quantity
+                    <ion-badge item-end>{{product.quantity}}</ion-badge>
+                  </ion-item>
+              <ion-item>
+                <ion-icon name="pricetag" item-start></ion-icon>
+               price
+                <ion-badge item-end>{{product.price|currency:'ksh':'symbol':'4.2-2'}}</ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="cash" item-start></ion-icon>
+               Total
+                <ion-badge item-end>{{product.price*product.quantity|currency:'ksh':'symbol':'4.2-2'}}</ion-badge>
+              </ion-item>
+              
             </ion-col>
             <ion-col>
               <button (click)="removeFromCart(product)" ion-button icon-left clear small>

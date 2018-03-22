@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "847269646763",
+    "firebase_url": "https://shoppingcartpush.firebaseio.com",
+    "project_id": "shoppingcartpush",
+    "storage_bucket": "shoppingcartpush.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847269646763:android:c12a9f51a60c43c6",
+        "android_client_info": {
+          "package_name": "com.carren.happuch.shoppingCart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847269646763-m1189r8s5ajjei0sovrecvjiitubgu5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVN0d85e_vxQSiAYT32USveALBhMRNtos"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
