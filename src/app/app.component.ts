@@ -30,7 +30,7 @@ export class MyApp {
 
     this.pageSettings = [
 
-      { title: 'Home', page: 'HomePage', icon: "ios-home-outline" },      
+      { title: 'Home', page: 'ProductsPage', icon: "ios-home-outline" },      
       { title: 'Cart', page: 'CartPage', icon: "cart" },
       { title: 'Check Out', page: 'CheckOutPage', icon: "ios-log-out" },
       { title: 'Settings', page: 'SettingsPage', icon: "ios-settings-outline" },
@@ -40,7 +40,7 @@ export class MyApp {
 
   openPage(pageSetting) {
     this.menuCtrl.close();
-    if (pageSetting.page == 'HomePage' || pageSetting.page == 'LoginPage') {
+    if (pageSetting.page == 'ProductsPage' || pageSetting.page == 'LoginPage') {
       this.nav.setRoot(pageSetting.page);
     }
     else

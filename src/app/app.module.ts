@@ -18,6 +18,7 @@ import {AngularFireModule} from 'angularfire2';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { TooltipsModule } from 'ionic-tooltips';
+import { DirectivesModule } from '../directives/directives.module';
 @NgModule({
   declarations: [
     MyApp,   
@@ -27,6 +28,7 @@ import { TooltipsModule } from 'ionic-tooltips';
     HttpClientModule,
     AngularFireAuthModule, 
     BrowserAnimationsModule,
+    DirectivesModule,
     IonicModule.forRoot(MyApp,{
       scrollAssist: false,
       autoFocusAssist: false

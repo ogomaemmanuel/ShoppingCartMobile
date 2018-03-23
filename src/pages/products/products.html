@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header #head>
 
   <ion-navbar color="primary">
       <button ion-button menuToggle icon-only>
@@ -16,9 +16,10 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content  class="scroll-content" padding hide-header [header]="head">
   
-  <ion-card atmCards *ngFor="let product of products;let idx = index" >
+  <div>
+  <ion-card atmCards  *ngFor="let product of products;let idx = index" >
     <img src="{{product.productMediaFile}}"/>
     <ion-card-content>
       <ion-card-title>
@@ -62,4 +63,5 @@
         </ion-col>
       </ion-row>
   </ion-card>
+</div>
 </ion-content>
