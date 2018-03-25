@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, AlertController, LoadingController, Events } from 'ionic-angular';
 import { ProductsProvider } from '../../providers/products/products';
 import { Product } from '../../models/product';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -20,6 +20,7 @@ import { CartProvider } from '../../providers/cart/cart';
 })
 export class ProductsPage implements OnInit {
   public products: Product[];
+  customer:string="";
   constructor(
     public navCtrl: NavController,
     private productProvider: ProductsProvider,
@@ -27,9 +28,12 @@ export class ProductsPage implements OnInit {
     private menuCtrl: MenuController,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
+    private events:Events,
     public navParams: NavParams) {
   }
   ngOnInit(): void {
+  this.customer=  this.navParams.get("loggedInUser");    
+    this.events.publish("loggedInUserName",this.customer);
     let loader=this.loadingCtrl.create({
       content:"loading....",
       spinner:'dots'

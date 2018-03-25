@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, AlertController, Events } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth'
 import { User } from '../../models/user';
+import { Storage } from '@ionic/storage';
 
 
 /**
@@ -26,11 +27,11 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private angularFireAuth: AngularFireAuth,
     private alertCtrl: AlertController,
+    private storage:Storage,    
     public navParams: NavParams) {
   }
   ngOnInit(): void {
     this.userLoginFormGroup = this.formBuilder.group({
-
       userName: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required,Validators.minLength(7)])],
     })
@@ -65,8 +66,14 @@ export class LoginPage implements OnInit {
   login() {
     let user: User = this.userLoginFormGroup.value;
     this.angularFireAuth.auth.signInWithEmailAndPassword(user.userName, user.password).then(resp => {
-      this.navCtrl.setRoot("ProductsPage");
 
+
+     // this.events.publish("loggedInUserName",resp.email)
+      console.log("LoggedIn UserDetails",JSON.stringify(resp.email))
+      this.storage.set("loggedInUserDetails",JSON.stringify( resp)).then(()=>{
+        this.navCtrl.setRoot("ProductsPage",{loggedInUser:resp.email});
+      })
+     
     }).catch(error => {     
      this.alertLoginError(error.message);
     })

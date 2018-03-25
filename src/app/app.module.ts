@@ -19,6 +19,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { TooltipsModule } from 'ionic-tooltips';
 import { DirectivesModule } from '../directives/directives.module';
+import { ShoppingCartAuthProvider } from '../providers/shopping-cart-auth/shopping-cart-auth';
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,   
@@ -29,6 +31,10 @@ import { DirectivesModule } from '../directives/directives.module';
     AngularFireAuthModule, 
     BrowserAnimationsModule,
     DirectivesModule,
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
     IonicModule.forRoot(MyApp,{
       scrollAssist: false,
       autoFocusAssist: false
@@ -52,7 +58,8 @@ import { DirectivesModule } from '../directives/directives.module';
         provide: HTTP_INTERCEPTORS,
         useClass: ShoppingCartHttpInterceptorProvider,
         multi: true
-      }    
+      },
+    ShoppingCartAuthProvider    
   ]
 })
 export class AppModule {}
