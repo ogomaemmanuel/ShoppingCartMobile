@@ -18,9 +18,6 @@ export class ShoppingCartHttpInterceptorProvider implements HttpInterceptor  {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-  
-  
-
    return Observable.fromPromise(this.storage.get("loggedInUserDetails")).mergeMap((userDetails:any)=>{
      if (req.responseType == 'json') {
       req = req.clone({ responseType: 'text',
@@ -28,7 +25,6 @@ export class ShoppingCartHttpInterceptorProvider implements HttpInterceptor  {
         Authorization: "Bearer "+JSON.parse(userDetails).stsTokenManager.accessToken 
        }  
      });
-
 			return next.handle(req).map(response => {
 				if (response instanceof HttpResponse) {
 					response = response.clone<any>({ body: JSON.parse(response.body) });
