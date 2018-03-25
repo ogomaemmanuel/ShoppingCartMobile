@@ -22,7 +22,6 @@ export class ShoppingCartHttpInterceptorProvider implements HttpInterceptor  {
   
 
    return Observable.fromPromise(this.storage.get("loggedInUserDetails")).mergeMap((userDetails:any)=>{
-     console.log("User at Interceptor",userDetails);
      if (req.responseType == 'json') {
       req = req.clone({ responseType: 'text',
       setHeaders: {  
