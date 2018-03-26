@@ -69,7 +69,8 @@ export class LoginPage implements OnInit {
 
 
      // this.events.publish("loggedInUserName",resp.email)
-      console.log("LoggedIn UserDetails",JSON.stringify(resp.email))
+     //console.log("Bearer Token",resp.stsTokenManager.accessToken); 
+      console.log("LoggedIn UserDetails",JSON.stringify(resp))      
       this.storage.set("loggedInUserDetails",JSON.stringify( resp)).then(()=>{
         this.navCtrl.setRoot("ProductsPage",{loggedInUser:resp.email});
       })
