@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import{Storage} from '@ionic/storage';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the OrderHistoryPage page.
@@ -18,6 +20,7 @@ export class OrderHistoryPage implements OnInit {
  
   constructor(
      public navCtrl: NavController,
+     private storage:Storage,
      public navParams: NavParams) {
   }
 
@@ -27,6 +30,12 @@ export class OrderHistoryPage implements OnInit {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderHistoryPage');
+  }
+
+  getCustomersOrder(){
+
+   
+
   }
 
 }

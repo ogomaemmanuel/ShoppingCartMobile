@@ -21,6 +21,7 @@ import { TooltipsModule } from 'ionic-tooltips';
 import { DirectivesModule } from '../directives/directives.module';
 import { ShoppingCartAuthProvider } from '../providers/shopping-cart-auth/shopping-cart-auth';
 import { IonicStorageModule } from '@ionic/storage';
+import { OrderHistoryProvider } from '../providers/order-history/order-history';
 @NgModule({
   declarations: [
     MyApp,   
@@ -59,7 +60,8 @@ import { IonicStorageModule } from '@ionic/storage';
         useClass: ShoppingCartHttpInterceptorProvider,
         multi: true
       },
-    ShoppingCartAuthProvider    
+    ShoppingCartAuthProvider,
+    OrderHistoryProvider    
   ]
 })
 export class AppModule {}

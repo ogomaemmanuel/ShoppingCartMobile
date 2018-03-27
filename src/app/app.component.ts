@@ -32,6 +32,7 @@ export class MyApp {
       { title: 'Check Out', page: 'CheckOutPage', icon: "ios-log-out" },
       { title: 'Settings', page: 'SettingsPage', icon: "ios-settings-outline" },
       { title: 'Logout', page: 'LoginPage', icon: "ios-log-out" },
+      { title: 'Order History', page: 'OrderHistoryPage', icon: "ios-log-out" },      
     ];
 
     this.events.subscribe("loggedInUserName", (data) => {
