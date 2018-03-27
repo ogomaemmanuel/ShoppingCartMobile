@@ -11,7 +11,7 @@ import {Storage} from '@ionic/storage';
 */
 @Injectable()
 export class OrderHistoryProvider {
-private endPoint:string="http://localhost:59395/"
+private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/"
   constructor(
     public http: HttpClient,
     private storage:Storage
@@ -20,8 +20,7 @@ private endPoint:string="http://localhost:59395/"
   }
 getCustomerOrders(){
   return Observable.fromPromise(this.storage.get("loggedInUserDetails")).mergeMap((userDetails:any)=>{
-   return this.http.get(this.endPoint+"api/Orders/"+JSON.parse(userDetails).uid);
+   return this.http.get(this.endPoint+"api/Orders/customer/"+JSON.parse(userDetails).uid);
   })
-
 }
 }

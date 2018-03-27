@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import{Storage} from '@ionic/storage';
 import { Observable } from 'rxjs/Observable';
+import { OrderHistoryProvider } from '../../providers/order-history/order-history';
 
 /**
  * Generated class for the OrderHistoryPage page.
@@ -17,25 +18,22 @@ import { Observable } from 'rxjs/Observable';
 })
 export class OrderHistoryPage implements OnInit {
 
- 
+ customerOrders:any=[]
   constructor(
      public navCtrl: NavController,
      private storage:Storage,
+     private orderHistoryProvider:OrderHistoryProvider,
      public navParams: NavParams) {
   }
-
-
   ngOnInit(): void {
-    //throw new Error("Method not implemented.");
+    this.getCustomersOrder();
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderHistoryPage');
   }
-
   getCustomersOrder(){
-
-   
-
+    this.orderHistoryProvider.getCustomerOrders().subscribe(orders=>{
+      this.customerOrders = orders;
+    }) 
   }
-
 }
