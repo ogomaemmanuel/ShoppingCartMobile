@@ -11,24 +11,25 @@
           <ion-icon name='menu'></ion-icon>    
         </button>
     <ion-title>Products</ion-title>
+
+    <ion-buttons end>
+      <button  ion-button icon-only>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+      <button  ion-button icon-only>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
-
-<ion-content  class="scroll-content" padding hide-header [header]="head">
-  
+<ion-content  class="scroll-content" padding hide-header [header]="head">  
   <div>
   <ion-card atmCards  *ngFor="let product of products;let idx = index" >
     <img src="{{product.productMediaFile}}"/>
     <ion-card-content>
       <ion-card-title>
        {{product.productName}}
-        </ion-card-title>
-      <p>
-        The most popular industrial group ever, and largely
-        responsible for bringing the music to a mass audience.
-      </p>
+        </ion-card-title>     
     </ion-card-content>
 
     <ion-row>
@@ -44,7 +45,6 @@
              rating
               <ion-badge item-end>{{product.shopperReview}}</ion-badge>
             </ion-item>
-
         <ion-col>
           <button  tooltip="double tap" positionV="top" arrow (dblclick)="rateProduct(product)" ion-button icon-left clear small>
             <ion-icon name="thumbs-up"></ion-icon>

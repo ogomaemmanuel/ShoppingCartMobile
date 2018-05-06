@@ -7,12 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>OrderHistory</ion-title>
+    <ion-title>Order History</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+    <ion-list>
+        <div *ngIf="customerOrders.length>0">
+        <ion-item *ngFor="let order of customerOrders">
+         
+          <p>Order Date: {{order.orderDate|date:'dd-MM-yyyy HH:mm'}}</p>
+          <p>Order No: {{order.orderNo}}</p>
+          <p>Order Total: {{order.orderTotal}}</p>
+          <button (click)="goToOrderDetails(order)" ion-button clear item-end>View</button>
+        </ion-item>
+        </div>
+      </ion-list>
 
 </ion-content>

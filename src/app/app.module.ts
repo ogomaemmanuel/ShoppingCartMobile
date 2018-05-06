@@ -22,6 +22,7 @@ import { DirectivesModule } from '../directives/directives.module';
 import { ShoppingCartAuthProvider } from '../providers/shopping-cart-auth/shopping-cart-auth';
 import { IonicStorageModule } from '@ionic/storage';
 import { OrderHistoryProvider } from '../providers/order-history/order-history';
+import { EndPoint } from './app.endpoint.config';
 @NgModule({
   declarations: [
     MyApp,   
@@ -60,6 +61,7 @@ import { OrderHistoryProvider } from '../providers/order-history/order-history';
         useClass: ShoppingCartHttpInterceptorProvider,
         multi: true
       },
+    {provide:EndPoint,useValue:"http://shoppingcartapi20180317120238.azurewebsites.net/"},
     ShoppingCartAuthProvider,
     OrderHistoryProvider    
   ]
