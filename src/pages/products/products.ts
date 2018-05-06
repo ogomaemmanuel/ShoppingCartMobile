@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, AlertController, LoadingController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, AlertController, LoadingController, Events, PopoverController } from 'ionic-angular';
 import { ProductsProvider } from '../../providers/products/products';
 import { Product } from '../../models/product';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -23,6 +23,7 @@ export class ProductsPage implements OnInit {
   customer:string="";
   constructor(
     public navCtrl: NavController,
+    private popoverCtrl: PopoverController,
     private productProvider: ProductsProvider,
     private cartProvider: CartProvider,
     private menuCtrl: MenuController,
@@ -94,5 +95,20 @@ export class ProductsPage implements OnInit {
   rateProduct(product: Product){
     console.log("product to rate is",product);
     this.navCtrl.push("ProductRatingPage",{product:product});
+  }
+  goToCartPage(){
+    this.navCtrl.push("CartPage");
+  }
+
+  presentExtraMenuPopover(event: any) {
+
+    let popover = this.popoverCtrl.create('MorePage');
+
+    popover.present({
+
+      ev: event
+
+    });
+
   }
 }
