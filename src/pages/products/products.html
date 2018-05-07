@@ -13,8 +13,9 @@
     <ion-title>Products</ion-title>
 
     <ion-buttons end>
-      <button (click)="goToCartPage()" ion-button icon-only>
+      <button (click)="goToCartPage()" item-end icon-right ion-button>
         <ion-icon name="cart"></ion-icon>
+        {{cartTotal}}
       </button>
       <button (click)="goToFavoritePage()" ion-button icon-only>
         <ion-icon name="heart"></ion-icon>

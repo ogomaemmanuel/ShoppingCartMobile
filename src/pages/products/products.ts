@@ -21,6 +21,7 @@ import { CartProvider } from '../../providers/cart/cart';
 export class ProductsPage implements OnInit {
   public products: Product[];
   customer:string="";
+  public cartTotal:number=0;
   constructor(
     public navCtrl: NavController,
     private popoverCtrl: PopoverController,
@@ -33,6 +34,9 @@ export class ProductsPage implements OnInit {
     public navParams: NavParams) {
   }
   ngOnInit(): void {
+    this.events.subscribe("cartCountChanged",(cartcount)=>{
+      this.cartTotal=cartcount;
+    })
   this.customer=  this.navParams.get("loggedInUser");    
     this.events.publish("loggedInUserName",this.customer);
     let loader=this.loadingCtrl.create({

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { Product } from '../../models/product';
-import { AlertController, Platform } from 'ionic-angular';
+import { AlertController, Platform, Events } from 'ionic-angular';
 
 /*
   Generated class for the CartProvider provider.
@@ -15,6 +15,7 @@ export class CartProvider {
   database: SQLiteObject;
   constructor(
     private sqlite: SQLite,
+    public events: Events,
     private AlertCtrl: AlertController,
     private platform:Platform
   ) {
@@ -51,11 +52,12 @@ export class CartProvider {
         product.shopperReview,
         quantity
         ]).then(()=>{
-          let alert = this.AlertCtrl.create({
-            message:"product added to cart",
-            buttons: ['Ok']
-          })
-          alert.present(); 
+          // let alert = this.AlertCtrl.create({
+          //   message:"product added to cart",
+          //   buttons: ['Ok']
+          // })
+          // alert.present(); 
+          this.publishCartCount();
 
         })
   }
@@ -88,10 +90,17 @@ export class CartProvider {
              });
         }
       }
+     
       return products;
     }, err => {
       console.log('Error: ', err);
       return [];
     });  
+  }
+
+  publishCartCount(){
+    this.getCartItems().then(x=>{
+      this.events.publish("cartCountChanged",x.length);
+    })    
   }
 }
