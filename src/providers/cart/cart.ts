@@ -120,8 +120,7 @@ export class CartProvider {
     return this.httpClient.post(this.endpoint + "api/Basket", product, httpOptions).map(products => products)
   }
   getCartItemsRemote() {
-
-
+   return this.httpClient.get(this.endpoint+ "api/Basket").map(products=>products)
   }
   removeFromCartRemote(product: Product) {
     const httpOptions = {

@@ -20,7 +20,7 @@ import 'rxjs/add/operator/map';
 })
 export class CartPage implements OnInit {
 
-  public products: Product[];
+  public products: any;
   constructor(
     public navCtrl: NavController,
     private cartProvider: CartProvider,
@@ -41,7 +41,7 @@ export class CartPage implements OnInit {
     })
   }
   getCartItems() {
-    this.cartProvider.getCartItems().then(products => {
+    this.cartProvider.getCartItemsRemote().subscribe(products => {
       this.products = products;
     })
   }
