@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import {RequestOptions, Request, RequestMethod} from '@angular/http';
 //import { Observable } from '@firebase/util';
 import { CheckoutOption } from '../../models/checkoutOption';
 import { Observable } from 'rxjs/Observable';
 import { Order } from '../../models/order';
+import { EndPoint } from '../../app/app.endpoint.config';
 
 /*
   Generated class for the CheckOutProvider provider.
@@ -18,7 +19,9 @@ export class CheckOutProvider {
   //private endPoint:string="http://4ea65ddc.ngrok.io/api/"
 
   
-  constructor(public http: HttpClient) {
+  constructor(
+    @Inject( EndPoint ) endpoint:string, 
+    public http: HttpClient) {
     console.log('Hello CheckOutProvider Provider');
   }
   getCheckOutOption():Observable<CheckoutOption>{

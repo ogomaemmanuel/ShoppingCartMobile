@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { Product } from '../../models/product';
 import { AlertController, Platform, Events } from 'ionic-angular';
+import { EndPoint } from "../../app/app.endpoint.config"
 
 /*
   Generated class for the CartProvider provider.
@@ -14,6 +15,7 @@ import { AlertController, Platform, Events } from 'ionic-angular';
 export class CartProvider {
   database: SQLiteObject;
   constructor(
+    @Inject( EndPoint ) endpoint:string,    
     private sqlite: SQLite,
     public events: Events,
     private AlertCtrl: AlertController,

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {Storage} from '@ionic/storage';
+import { EndPoint } from '../../app/app.endpoint.config';
 
 /*
   Generated class for the OrderHistoryProvider provider.
@@ -13,6 +14,7 @@ import {Storage} from '@ionic/storage';
 export class OrderHistoryProvider {
 private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/"
   constructor(
+    @Inject( EndPoint ) endpoint:string, 
     public http: HttpClient,
     private storage:Storage
   ) {
