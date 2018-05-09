@@ -81,7 +81,10 @@ export class ProductsPage implements OnInit {
         {
           text: 'Add',
           handler: data => {
-            this.cartProvider.AddProductToCart(product,data.quantity);
+            this.cartProvider.AddProductToCartRemote(product,data.quantity).subscribe(x=>{
+
+              console.log("product added to cart");
+            });
           }
         }
       ]
