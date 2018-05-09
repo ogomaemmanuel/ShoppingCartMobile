@@ -61,7 +61,8 @@ import { EndPoint } from './app.endpoint.config';
         useClass: ShoppingCartHttpInterceptorProvider,
         multi: true
       },
-    {provide:EndPoint,useValue:"http://shoppingcartapi20180317120238.azurewebsites.net/"},
+    //{provide:EndPoint,useValue:"http://shoppingcartapi20180317120238.azurewebsites.net/"},
+    {provide:EndPoint,useValue:"https://93178e0f.ngrok.io/"},
     ShoppingCartAuthProvider,
     OrderHistoryProvider    
   ]

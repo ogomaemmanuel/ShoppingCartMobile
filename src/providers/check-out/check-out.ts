@@ -15,14 +15,11 @@ import { EndPoint } from '../../app/app.endpoint.config';
 */
 @Injectable()
 export class CheckOutProvider {
-  private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/api/"
-  //private endPoint:string="http://4ea65ddc.ngrok.io/api/"
-
-  
+  private endPoint:string="" 
   constructor(
     @Inject( EndPoint ) endpoint:string, 
     public http: HttpClient) {
-    console.log('Hello CheckOutProvider Provider');
+    this.endPoint=endpoint;
   }
   getCheckOutOption():Observable<CheckoutOption>{
   return  this.http.get<CheckoutOption>(this.endPoint+"CheckoutOption");
