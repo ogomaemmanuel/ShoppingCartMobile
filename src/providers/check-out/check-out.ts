@@ -36,6 +36,6 @@ export class CheckOutProvider {
         'Accept': 'application/json'      
       })
     };
-   return this.http.post(this.endPoint+"Orders",order,httpOptions)
+   return this.http.post(this.endPoint+"api/orders",order,httpOptions)
   }
 }

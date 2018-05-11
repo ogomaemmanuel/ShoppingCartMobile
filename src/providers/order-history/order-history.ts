@@ -12,17 +12,18 @@ import { EndPoint } from '../../app/app.endpoint.config';
 */
 @Injectable()
 export class OrderHistoryProvider {
-private endPoint:string="http://shoppingcartapi20180317120238.azurewebsites.net/"
+private endPoint:string=""
   constructor(
     @Inject( EndPoint ) endpoint:string, 
     public http: HttpClient,
     private storage:Storage
   ) {
+    this.endPoint=endpoint;
     console.log('Hello OrderHistoryProvider Provider');
   }
 getCustomerOrders(){
   return Observable.fromPromise(this.storage.get("loggedInUserDetails")).mergeMap((userDetails:any)=>{
-   return this.http.get(this.endPoint+"api/Orders/customer/"+JSON.parse(userDetails).uid);
+   return this.http.get(this.endPoint+"api/orders/customer/"+JSON.parse(userDetails).uid);
   })
 }
 }
