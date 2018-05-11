@@ -5,6 +5,8 @@ import { Product } from '../../models/product';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Observable } from 'rxjs/Observable';
 import { CartProvider } from '../../providers/cart/cart';
+import * as signalR from '@aspnet/signalr'
+
 
 /**
  * Generated class for the ProductsPage page.
@@ -19,7 +21,8 @@ import { CartProvider } from '../../providers/cart/cart';
   templateUrl: 'products.html',
 })
 export class ProductsPage implements OnInit {
-  public products: Product[];
+  public products: Product[]; 
+  msgs: any = [];
   customer:string="";
   public cartTotal:number=0;
   constructor(
@@ -52,6 +55,7 @@ export class ProductsPage implements OnInit {
       loader.dismiss();
       console.log("error");
     });
+    //this.productProvider.getNotifiication();
   }
   ionViewWillEnter() {
     this.menuCtrl.swipeEnable(true);
@@ -118,4 +122,5 @@ export class ProductsPage implements OnInit {
     });
 
   }
+  
 }

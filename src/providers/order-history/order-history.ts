@@ -26,4 +26,7 @@ getCustomerOrders(){
    return this.http.get(this.endPoint+"api/orders/customer/"+JSON.parse(userDetails).uid);
   })
 }
+getOrderLineItems(orderId:any){  
+    return this.http.get(this.endPoint+"api/orders/order-items/"+orderId);   
+}
 }

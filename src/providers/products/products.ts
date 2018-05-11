@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Product } from '../../models/product';
 import { Observable } from 'rxjs/Observable';
 import { EndPoint } from '../../app/app.endpoint.config';
+import * as signalR from '@aspnet/signalr'
 
 /*
   Generated class for the ProductsProvider provider.
@@ -25,7 +26,27 @@ export class ProductsProvider {
   getAllProducts(): Observable<any> {
     return this.http.get(this.productsEndPoint).map(products => products)
   }
+  getNotifiication(){
+    const connection = new signalR.HubConnectionBuilder()
+    .withUrl(this.endpoint+"NotificationHub")
+    .configureLogging(signalR.LogLevel.Information)
+    .build();
+    
+   connection.start().catch(err => console.error(err.toString()));
 
+   connection.on('sendToAll', (nick: string, receivedMessage: string) => {
+
+    const text = `${nick}: ${receivedMessage}`;
+  
+   console.log("message received from the hub" ,text);
+  
+  });
+  connection
+
+      .invoke('sendToAll', "Emmanuel", "Hello everyone")
+
+      .catch(err => console.error(err));
+  }
   rateProduct(product: any) {
     const httpOptions = {
       headers: new HttpHeaders({

@@ -15,4 +15,46 @@
 
 <ion-content padding>
 
+    <div>
+        <ion-card atmCards  *ngFor="let product of orderItems;let idx = index" >
+          <img src="{{product.productMediaFile}}"/>
+          <ion-card-content>
+            <ion-card-title>
+             {{product.productName}}
+              </ion-card-title>     
+          </ion-card-content>
+      
+          <ion-row>
+      
+              <ion-item>
+                  <ion-icon name="pricetag" item-start></ion-icon>
+                 price
+                  <ion-badge item-end>{{product.price|currency:'ksh':'symbol':'4.2-2'}}</ion-badge>
+                </ion-item>
+      
+                <ion-item>
+                    <ion-icon name="star" item-start></ion-icon>
+                   rating
+                    <ion-badge item-end>{{product.shopperReview}}</ion-badge>
+                  </ion-item>
+              <ion-col>
+                <button  tooltip="double tap" positionV="top" arrow (dblclick)="rateProduct(product)" ion-button icon-left clear small>
+                  <ion-icon name="thumbs-up"></ion-icon>
+                  <div>Rate this</div>
+                </button>
+              </ion-col>
+              <ion-col>
+                <button (click)="addToCart(product)" ion-button icon-left clear small>
+                  <ion-icon name="cart"></ion-icon>
+                  <div></div>
+                </button>
+              </ion-col>
+              <ion-col center text-center>
+                <ion-note>            
+                </ion-note>
+              </ion-col>
+            </ion-row>
+        </ion-card>
+      </div>
+
 </ion-content>
