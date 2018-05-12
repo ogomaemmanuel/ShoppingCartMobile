@@ -62,7 +62,7 @@ import { EndPoint } from './app.endpoint.config';
         multi: true
       },
     //{provide:EndPoint,useValue:"http://shoppingcartapi20180317120238.azurewebsites.net/"},
-    {provide:EndPoint,useValue:"http://1e75f28f.ngrok.io/"},
+    {provide:EndPoint,useValue:"http://c1b1c20a.ngrok.io/"},
     ShoppingCartAuthProvider,
     OrderHistoryProvider    
   ]

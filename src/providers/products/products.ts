@@ -33,8 +33,11 @@ export class ProductsProvider {
     .configureLogging(signalR.LogLevel.Information)
     .build();
     
-   connection.start().catch(err => console.error(err.toString()));
-
+   connection.start().then(()=>{
+    connection
+    .invoke('sendToAll', "Hello There", "I am Emmanuel")
+   }).catch(err => console.error(err.toString()));
+   
    connection.on('sendToAll', (nick: string, receivedMessage: string) => {
 
     const text = `${nick}: ${receivedMessage}`;
@@ -42,11 +45,9 @@ export class ProductsProvider {
    console.log("message received from the hub" ,text);
   
   });
-  connection
+ 
 
-      .invoke('sendToAll', "Emmanuel", "Hello everyone")
-
-      .catch(err => console.error(err));
+      //.catch(err => console.error(err));
   }
   rateProduct(product: any) {
     const httpOptions = {
