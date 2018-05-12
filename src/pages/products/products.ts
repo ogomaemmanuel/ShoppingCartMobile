@@ -55,7 +55,7 @@ export class ProductsPage implements OnInit {
       loader.dismiss();
       console.log("error");
     });
-    //this.productProvider.getNotifiication();
+    this.productProvider.getNotifiication();
   }
   ionViewWillEnter() {
     this.menuCtrl.swipeEnable(true);

@@ -27,8 +27,9 @@ export class ProductsProvider {
     return this.http.get(this.productsEndPoint).map(products => products)
   }
   getNotifiication(){
+    
     const connection = new signalR.HubConnectionBuilder()
-    .withUrl(this.endpoint+"NotificationHub")
+    .withUrl(this.endpoint+"NotificationHub",{transport: signalR.HttpTransportType.LongPolling})
     .configureLogging(signalR.LogLevel.Information)
     .build();
     
