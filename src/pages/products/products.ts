@@ -6,6 +6,7 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Observable } from 'rxjs/Observable';
 import { CartProvider } from '../../providers/cart/cart';
 import * as signalR from '@aspnet/signalr'
+import { SignalrNoticationsProvider } from '../../providers/signalr-notications/signalr-notications';
 
 
 /**
@@ -33,6 +34,7 @@ export class ProductsPage implements OnInit {
     private menuCtrl: MenuController,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
+    public signalrNoticationsProvider:SignalrNoticationsProvider,
     private events:Events,
     public navParams: NavParams) {
   }
@@ -55,7 +57,7 @@ export class ProductsPage implements OnInit {
       loader.dismiss();
       console.log("error");
     });
-    this.productProvider.getNotifiication();
+    this.signalrNoticationsProvider.getNotifiication();
   }
   ionViewWillEnter() {
     this.menuCtrl.swipeEnable(true);

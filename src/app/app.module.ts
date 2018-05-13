@@ -23,6 +23,7 @@ import { ShoppingCartAuthProvider } from '../providers/shopping-cart-auth/shoppi
 import { IonicStorageModule } from '@ionic/storage';
 import { OrderHistoryProvider } from '../providers/order-history/order-history';
 import { EndPoint } from './app.endpoint.config';
+import { SignalrNoticationsProvider } from '../providers/signalr-notications/signalr-notications';
 @NgModule({
   declarations: [
     MyApp,   
@@ -62,9 +63,10 @@ import { EndPoint } from './app.endpoint.config';
         multi: true
       },
     //{provide:EndPoint,useValue:"http://shoppingcartapi20180317120238.azurewebsites.net/"},
-    {provide:EndPoint,useValue:"http://c1b1c20a.ngrok.io/"},
+    {provide:EndPoint,useValue:"http://a63250de.ngrok.io/"},
     ShoppingCartAuthProvider,
-    OrderHistoryProvider    
+    OrderHistoryProvider,
+    SignalrNoticationsProvider    
   ]
 })
 export class AppModule {}

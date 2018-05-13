@@ -4,7 +4,9 @@ import 'rxjs/add/operator/map';
 import { Product } from '../../models/product';
 import { Observable } from 'rxjs/Observable';
 import { EndPoint } from '../../app/app.endpoint.config';
+import{Storage} from '@ionic/storage';
 import * as signalR from '@aspnet/signalr'
+import { SignalrNoticationsProvider } from '../signalr-notications/signalr-notications';
 
 /*
   Generated class for the ProductsProvider provider.
@@ -19,36 +21,15 @@ export class ProductsProvider {
   //private endPoint:string="http://0edb49fb.ngrok.io/api/products/all"
   constructor(
     @Inject(EndPoint) endpoint: string,
+    private storage:Storage,    
     public http: HttpClient) {
-      this.endpoint=endpoint;
+    this.endpoint=endpoint;
     this.productsEndPoint = endpoint + this.productsEndPoint;
   }
   getAllProducts(): Observable<any> {
     return this.http.get(this.productsEndPoint).map(products => products)
   }
-  getNotifiication(){
-    
-    const connection = new signalR.HubConnectionBuilder()
-    .withUrl(this.endpoint+"NotificationHub",{transport: signalR.HttpTransportType.LongPolling})
-    .configureLogging(signalR.LogLevel.Information)
-    .build();
-    
-   connection.start().then(()=>{
-    connection
-    .invoke('sendToAll', "Hello There", "I am Emmanuel")
-   }).catch(err => console.error(err.toString()));
-   
-   connection.on('sendToAll', (nick: string, receivedMessage: string) => {
-
-    const text = `${nick}: ${receivedMessage}`;
   
-   console.log("message received from the hub" ,text);
-  
-  });
- 
-
-      //.catch(err => console.error(err));
-  }
   rateProduct(product: any) {
     const httpOptions = {
       headers: new HttpHeaders({
