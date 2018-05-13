@@ -26,6 +26,7 @@ endPoint: string="";
     const connection = new signalR.HubConnectionBuilder()
     .withUrl(this.endPoint+"NotificationHub",{transport: signalR.HttpTransportType.LongPolling,skipNegotiation:false})
     .configureLogging(signalR.LogLevel.Information)
+    
     .build();
     
    connection.start().then(()=>{
