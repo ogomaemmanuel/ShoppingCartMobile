@@ -63,7 +63,7 @@ import { SignalrNoticationsProvider } from '../providers/signalr-notications/sig
         multi: true
       },
     //{provide:EndPoint,useValue:"http://shoppingcartapi20180317120238.azurewebsites.net/"},
-    {provide:EndPoint,useValue:"http://877dfc34.ngrok.io/"},
+    {provide:EndPoint,useValue:"http://666067dc.ngrok.io/"},
     ShoppingCartAuthProvider,
     OrderHistoryProvider,
     SignalrNoticationsProvider    

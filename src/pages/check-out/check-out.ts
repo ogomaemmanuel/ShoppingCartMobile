@@ -45,7 +45,4 @@ export class CheckOutPage implements OnInit {
     this.navCtrl.push('ShippingPaymentOptionsPage',
       { billingInfo: billingInfo });
   }
-
-
-
 }
