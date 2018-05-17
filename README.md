@@ -11,8 +11,21 @@ it allows customers to buy goods online and checkout using varous payment option
 * Multidevice session, any change in basket or customer fovourite is shown on device a user is logged on
 * Order history
 * Order cancellation
+* Social Media sharing with whatsapp,facebook twitter etc
 
-## 
+##Future and Road Map
+* Qr code scanner for authenticating web login
+* Mpesa Wallet
+
+##Running The App Locally
+
+
+##Known Issues When Debbuging Or Running
+
+
+## Debbugging The App On Chrome
+
+
 
 
  

@@ -65,7 +65,7 @@ import { ProductSharingProvider } from '../providers/product-sharing/product-sha
         multi: true
       },
     //{provide:EndPoint,useValue:"http://shoppingcartapi20180317120238.azurewebsites.net/"},
-    {provide:EndPoint,useValue:"http://9b61b3d8.ngrok.io/"},
+    {provide:EndPoint,useValue:"http://localhost:9008/"},
     ShoppingCartAuthProvider,
     SocialSharing,
     OrderHistoryProvider,
