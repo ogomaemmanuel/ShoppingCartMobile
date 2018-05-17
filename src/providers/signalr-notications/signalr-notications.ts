@@ -4,6 +4,7 @@ import * as signalR from '@aspnet/signalr'
 import { EndPoint } from '../../app/app.endpoint.config';
 import { Events } from 'ionic-angular';
 import{Storage} from '@ionic/storage';
+import { Product } from '../../models/product';
 /*
   Generated class for the SignalrNoticationsProvider provider.
 
@@ -38,9 +39,16 @@ endPoint: string="";
    }).catch(err => console.error(err.toString()));
    
    connection.on('SendToAll', (messageType: string, receivedMessage: string) => {
+    console.log("Message from SignalR",receivedMessage);
      if(messageType=="BasketChanged"){
+       console.log("BasketChanged",receivedMessage);
       this.events.publish("cartCountChanged", receivedMessage);
+
      }
+
+     connection.on("ProductChange",(product:string)=>{
+      this.events.publish("productChangeEvent", product);
+     })
 
     
   

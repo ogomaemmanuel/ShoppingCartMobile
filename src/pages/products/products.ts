@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { CartProvider } from '../../providers/cart/cart';
 import * as signalR from '@aspnet/signalr'
 import { SignalrNoticationsProvider } from '../../providers/signalr-notications/signalr-notications';
+import { ProductSharingProvider } from '../../providers/product-sharing/product-sharing';
 
 
 /**
@@ -36,6 +37,7 @@ export class ProductsPage implements OnInit {
     private loadingCtrl: LoadingController,
     public signalrNoticationsProvider:SignalrNoticationsProvider,
     private events:Events,
+    private productSharingProvider: ProductSharingProvider,
     public navParams: NavParams) {
   }
   ngOnInit(): void {
@@ -124,5 +126,8 @@ export class ProductsPage implements OnInit {
     });
 
   }
-  
+  shareProduct(product:Product){
+    console.log("Share clicked");
+    this.productSharingProvider.ShareOnAnyApp(product)
+  }
 }

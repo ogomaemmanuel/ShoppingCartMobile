@@ -7,5 +7,7 @@ export class Product{
    public shopperReview:number;
    public productId:string;
    public price:number;
-   public quantity?:number
+   public quantity?:number;
+   //has been added for social sharing feature
+   public productUrl:string;
 }

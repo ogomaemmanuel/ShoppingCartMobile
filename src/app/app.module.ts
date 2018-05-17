@@ -24,6 +24,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { OrderHistoryProvider } from '../providers/order-history/order-history';
 import { EndPoint } from './app.endpoint.config';
 import { SignalrNoticationsProvider } from '../providers/signalr-notications/signalr-notications';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { ProductSharingProvider } from '../providers/product-sharing/product-sharing';
 @NgModule({
   declarations: [
     MyApp,   
@@ -63,10 +65,12 @@ import { SignalrNoticationsProvider } from '../providers/signalr-notications/sig
         multi: true
       },
     //{provide:EndPoint,useValue:"http://shoppingcartapi20180317120238.azurewebsites.net/"},
-    {provide:EndPoint,useValue:"http://666067dc.ngrok.io/"},
+    {provide:EndPoint,useValue:"http://9b61b3d8.ngrok.io/"},
     ShoppingCartAuthProvider,
+    SocialSharing,
     OrderHistoryProvider,
-    SignalrNoticationsProvider    
+    SignalrNoticationsProvider,
+    ProductSharingProvider    
   ]
 })
 export class AppModule {}
