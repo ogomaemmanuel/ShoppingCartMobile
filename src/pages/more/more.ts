@@ -22,4 +22,8 @@ export class MorePage {
     console.log('ionViewDidLoad MorePage');
   }
 
+  loginOnWeb(){
+    this.navCtrl.push("WebLoginPage");
+  }
+
 }

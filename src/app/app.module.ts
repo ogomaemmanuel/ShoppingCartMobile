@@ -26,6 +26,7 @@ import { EndPoint } from './app.endpoint.config';
 import { SignalrNoticationsProvider } from '../providers/signalr-notications/signalr-notications';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ProductSharingProvider } from '../providers/product-sharing/product-sharing';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 @NgModule({
   declarations: [
     MyApp,   
@@ -58,6 +59,7 @@ import { ProductSharingProvider } from '../providers/product-sharing/product-sha
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductsProvider,
     CartProvider,
+    BarcodeScanner,
     CheckOutProvider,    
       {
         provide: HTTP_INTERCEPTORS,
