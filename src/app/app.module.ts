@@ -67,7 +67,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
         multi: true
       },
     //{provide:EndPoint,useValue:"http://shoppingcartapi20180317120238.azurewebsites.net/"},
-    {provide:EndPoint,useValue:"http://localhost:9008/"},
+    {provide:EndPoint,useValue:"http://26928c34.ngrok.io/"},
     ShoppingCartAuthProvider,
     SocialSharing,
     OrderHistoryProvider,

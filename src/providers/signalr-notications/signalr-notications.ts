@@ -25,18 +25,18 @@ endPoint: string="";
   getNotifiication(){
     
     const connection = new signalR.HubConnectionBuilder()
-    .withUrl(this.endPoint+"Signalr/NotificationHub",{transport: signalR.HttpTransportType.LongPolling,skipNegotiation:false})
+    .withUrl(this.endPoint+"Signalr/NotificationHub",{transport: signalR.HttpTransportType.LongPolling})
     .configureLogging(signalR.LogLevel.Information)
     
     .build();
-    
+    connection.serverTimeoutInMilliseconds= 1000 * 60 * 10; // 1 second * 60 * 10 = 10 minutes.
    connection.start().then(()=>{
     this.storage.get("loggedInUserDetails").then(userdetails=>{
       connection
       .invoke('RegisterUser', JSON.parse(userdetails).uid);
     })
     
-   }).catch(err => console.error(err.toString()));
+   }).catch(err => console.error("SignalR Error",err.toString()));
    
    connection.on('SendToAll', (messageType: string, receivedMessage: string) => {
     console.log("Message from SignalR",receivedMessage);
@@ -46,7 +46,8 @@ endPoint: string="";
 
      }
 
-     connection.on("ProductChange",(product:string)=>{
+     connection.on("productChanged",(product:string)=>{
+       console.log(product);
       this.events.publish("productChangeEvent", product);
      })
 
