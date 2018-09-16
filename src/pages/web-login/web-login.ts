@@ -25,7 +25,7 @@ export class WebLoginPage implements OnInit {
 
   ngOnInit(): void {
     this.barcodeScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
+      console.log('Barcode data', barcodeData.text);
      }).catch(err => {
          console.log('Error', err);
      });
