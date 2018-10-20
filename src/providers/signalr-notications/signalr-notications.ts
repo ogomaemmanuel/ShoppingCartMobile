@@ -23,13 +23,13 @@ endPoint: string="";
   }
 
   getNotifiication(){
-    
+    let tryingToReconnect = false;
     const connection = new signalR.HubConnectionBuilder()
     .withUrl(this.endPoint+"Signalr/NotificationHub",{transport: signalR.HttpTransportType.LongPolling})
     .configureLogging(signalR.LogLevel.Information)
     
     .build();
-    connection.serverTimeoutInMilliseconds= 1000 * 60 * 10; // 1 second * 60 * 10 = 10 minutes.
+    connection.serverTimeoutInMilliseconds= 60000; // 1 second * 60 * 10 = 10 minutes.
    connection.start().then(()=>{
     this.storage.get("loggedInUserDetails").then(userdetails=>{
       connection

@@ -66,8 +66,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
         useClass: ShoppingCartHttpInterceptorProvider,
         multi: true
       },
-    {provide:EndPoint,useValue:"http://store.dreamworks.co.ke/"},
-  //{provide:EndPoint,useValue:"http://localhost:9008/"},
+   // {provide:EndPoint,useValue:"http://store.dreamworks.co.ke/"},
+  {provide:EndPoint,useValue:"http://localhost:9008/"},
     ShoppingCartAuthProvider,
     SocialSharing,
     OrderHistoryProvider,

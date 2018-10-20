@@ -34,9 +34,8 @@ export class CartPage implements OnInit {
   ionViewDidLoad() {
     this.getCartItems();
   }
-
   removeFromCart(product: Product) {
-    this.cartProvider.removeFromCart(product).then(() => {
+    this.cartProvider.removeFromCartRemote(product).subscribe(() => {
       this.getCartItems();
     })
   }

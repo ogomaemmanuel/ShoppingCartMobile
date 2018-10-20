@@ -129,6 +129,6 @@ export class CartProvider {
         'Accept': 'application/json'
       }),      
     };
-    return this.httpClient.delete(this.endpoint + "api/Basket/"+product.productId,httpOptions)
+    return this.httpClient.delete(`${this.endpoint}api/Basket/${product.productId}`,httpOptions)
   }
 }
